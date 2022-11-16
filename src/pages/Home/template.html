@@ -1,5 +1,6 @@
 <div class="HomePage__wrapper full-screen">
     <div class="HomePage_header flex full-width padding_container-l flex-justify-between">
+
         <div class="HomePage__header-addBtn padding_container-xs
                     flex flex-center cursor-pointer" @click="changeAddFormVisible()">
             +
@@ -9,5 +10,17 @@
             <span @click="logout" class="HomePage__header-logout cursor-pointer">Выход</span>
         </div>
     </div>
-    <AddForm v-if="addFormVisible" @close="changeAddFormVisible()"/>
+    <AddForm v-if="addFormVisible"
+             @close="changeAddFormVisible()"
+             @submit="getItems()"
+    />
+    <div class="HomePage__content full-screen">
+        <div class="div"
+             :key="item.id"
+             v-for="item in items">
+            <TaskRender
+                    :data="item"
+            />
+        </div>
+    </div>
 </div>
