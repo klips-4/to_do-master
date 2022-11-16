@@ -1,0 +1,35 @@
+.HomePage__ {
+  &wrapper {
+    position: relative;
+  }
+
+  &header- {
+    &addBtn {
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      background: var(--form-background);
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: var(--box-shadow);
+        background: var(--main-background-color);
+        color: var(--form-background);
+      }
+    }
+
+    &logout {
+      color: var(--form-background);
+      transition: 0.3s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &userName {
+      color: var(--form-background);
+      margin-right: var(--offset_s);
+    }
+  }
+}

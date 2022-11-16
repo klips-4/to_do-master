@@ -1,0 +1,13 @@
+<div class="HomePage__wrapper full-screen">
+    <div class="HomePage_header flex full-width padding_container-l flex-justify-between">
+        <div class="HomePage__header-addBtn padding_container-xs
+                    flex flex-center cursor-pointer" @click="changeAddFormVisible()">
+            +
+        </div>
+        <div>
+            <span class="HomePage__header-userName">{{ userName }}</span>
+            <span @click="logout" class="HomePage__header-logout cursor-pointer">Выход</span>
+        </div>
+    </div>
+    <AddForm v-if="addFormVisible" @close="changeAddFormVisible()"/>
+</div>
