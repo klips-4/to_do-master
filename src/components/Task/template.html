@@ -3,8 +3,12 @@
         <span class="full-width">{{data.created_at}}</span>
         <h2 class="full-width padding__container-l">{{data.description}}</h2>
         <div class="BTN">
-            <button>Выполнено</button>
-            <button @click="deleteItem">Удалить</button>
+            <span v-if="data.date_completed">
+                Выполнена
+            </span>
+            <button v-if="!data.date_completed" @click="completeTask(data)">Выполнено
+            </button>
+            <button @click="deleteTask(data.id)">Удалить</button>
         </div>
 
     </div>

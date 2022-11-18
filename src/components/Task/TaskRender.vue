@@ -7,16 +7,18 @@
         name: "TaskRender",
         props: ['data'],
         data() {
-            return {
-
-            }
+            return {}
 
         },
 
         methods: {
-            deleteItem() {
+            deleteTask(id) {
+                this.$emit('deleted', id)
+            },
 
-            }
+            completeTask(data) {
+                this.$emit('completeTask', data)
+            },
         }
 
 

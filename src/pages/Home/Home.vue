@@ -14,7 +14,9 @@
             return {
                 addFormVisible: false,
                 items: [],
+                onlyActive: '1',
                 source: new SourceService({endpoint: 'Task'})
+
             }
         },
         beforeMount() {
@@ -29,21 +31,35 @@
                 this.addFormVisible = !this.addFormVisible;
             },
             getItems() {
-                this.source.list().then((result) => {
+                this.source.list({onlyActive: Number(this.onlyActive)}).then((result) => {
                     if (result.success) {
                         this.items = result.data;
                     }
                 });
-            }
-        },
-        computed: {
-            userName() {
-                const userData = AuthHelpers.getUserInfo();
-                return userData.surname + ' ' + userData.name[0] + '.';
-            }
-        },
+            },
+            deleteTask(id) {
+                this.source.delete(id).then((res) => {
+                    if (res.success) {
+                        this.getItems()
+                    }
+                });
+            },
+            completeTask(data) {
+                console.log('hello')
+                data.date_completed = new Date();
+                this.source.update(data)
+            },
+            applyFilter() {
+                this.getItems();
+            },
+            computed: {
+                userName() {
+                    const userData = AuthHelpers.getUserInfo();
+                    return userData.surname + ' ' + userData.name[0] + '.';
+                }
+            },
 
-
+        }
     }
 </script>
 

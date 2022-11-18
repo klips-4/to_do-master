@@ -10,6 +10,13 @@
             <span @click="logout" class="HomePage__header-logout cursor-pointer">Выход</span>
         </div>
     </div>
+    <div class="HomePage_filter full-width padding_container-l
+                flex flex-justify-end">
+        <select name="filter" v-model="onlyActive" @change="applyFilter">
+            <option value="0">Все</option>
+            <option value="1">Активные</option>
+        </select>
+    </div>
     <AddForm v-if="addFormVisible"
              @close="changeAddFormVisible()"
              @submit="getItems()"
@@ -20,6 +27,8 @@
              v-for="item in items">
             <TaskRender
                     :data="item"
+                    @deleted="deleteTask"
+                    @completeTask="completeTask"
             />
         </div>
     </div>
