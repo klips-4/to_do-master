@@ -1,10 +1,10 @@
 <div class="Render__wrapper">
     <div class="RenderTask__content flex flex-column">
-        <span class="full-width">{{data.created_at}}</span>
+        <span class="full-width">{{dateFormatter(data.created_at)}}</span>
         <h2 class="full-width padding__container-l">{{data.description}}</h2>
         <div class="BTN">
             <span v-if="data.date_completed">
-                Выполнена
+                Выполнена: {{dateFormatter(data.date_completed)}}
             </span>
             <button v-if="!data.date_completed" @click="completeTask(data)">Выполнено
             </button>

@@ -7,7 +7,9 @@
         name: "TaskRender",
         props: ['data'],
         data() {
-            return {}
+            return {
+
+            }
 
         },
 
@@ -19,6 +21,15 @@
             completeTask(data) {
                 this.$emit('completeTask', data)
             },
+
+            dateFormatter(date) {
+                date = new Date(date);
+                return date.toLocaleString('ru', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
         }
 
 
